@@ -1,11 +1,13 @@
 const router = require('express').Router()
 
-const usersSchema = require('../../schemas/users-schema')
+const userSchema = require('../../schemas/user-schema')
 
-router.get('/get-stars', async (req, res) => {
-  const userId = req.query.userId || req.params.userId
+router.get('/get-stars/:userId', async (req, res) => {
+  const userId = req.params.userId
 
-  const result = await usersSchema.findOne({ _userId: userId })
+  if (!userId) return res.json({ "warn": `You need to provide an ID to search for stars!` })
+
+  const result = await userSchema.findOne({ _userId: userId })
 
   if (!result) {
     const stars = 0

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const usersSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
   _userId: {
     type: String,
     required: true,
@@ -30,4 +30,4 @@ const usersSchema = mongoose.Schema({
   dailyTime: String
 })
 
-module.exports = mongoose.model('users', usersSchema)
+module.exports = mongoose.model('user', userSchema)

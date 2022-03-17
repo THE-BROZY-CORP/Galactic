@@ -1,4 +1,4 @@
-const usersSchema = require('../schemas/users-schema')
+const userSchema = require('../schemas/user-schema')
 const jwt = require('jsonwebtoken')
 
 module.exports = async (req, res, next) => {
@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
   
   if (!password) return res.json({ 'warn': `access denied! you didn't provide a password`})
 
-  const result = await usersSchema.findOne({ _userId: userId })
+  const result = await userSchema.findOne({ _userId: userId })
   
   if (!result) return res.json({ 'warn': `access denied! you don't have a registered account` })
 
